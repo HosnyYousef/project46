@@ -15,13 +15,14 @@
             <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.quote %></span>
             <span class='del'> Delete </span>
         </li>
-    <% }) %>    
+    <% }) %>
     </ul>
 
     <h2>Things left to do: <%= left %></h2>
 
     <form action="/quotes/createQuote" method='POST'>
         <input type="text" placeholder="Enter Quote Item" name='quoteItem'>
+        <input type="text" placeholder="Author" name='authorItem'>
         <input type="submit">
     </form>
 
