@@ -11,14 +11,15 @@
     <h1>Quotes</h1>
     <ul>
     <% quotes.forEach( el => { %>
-        <li class='quoteItem' data-id='<%=el._id%>'>
+        <li class='quoteItem, authorItem' data-id='<%=el._id%>'>
             <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.quote %></span>
+            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.author %></span>
             <span class='del'> Delete </span>
         </li>
     <% }) %>
     </ul>
 
-    <h2>Things left to do: <%= left %></h2>
+    <h2>Quotes left to Apply to life: <%= left %></h2>
 
     <form action="/quotes/createQuote" method='POST'>
         <input type="text" placeholder="Enter Quote Item" name='quoteItem'>

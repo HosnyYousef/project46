@@ -4,15 +4,22 @@ module.exports = {
     getQuotes: async (req,res)=>{
         try{
             const quoteItems = await Quote.find()
+            const authorItems = await Quote.find()
             const itemsLeft = await Quote.countDocuments({completed: false})
-            res.render('quotes.ejs', {quotes: quoteItems, left: itemsLeft})
+            res.render('quotes.ejs', {
+                quotes: quoteItems, 
+                authors: authorItems, 
+                left: itemsLeft})
         }catch(err){
             console.log(err)
         }
     },
     createQuote: async (req, res)=>{
         try{
-            await Quote.create({quote: req.body.quoteItem, completed: false})
+            await Quote.create({
+                quote: req.body.quoteItem, 
+                author: req.body.authorItem, 
+                completed: false})
             console.log('Quote has been added!')
             res.redirect('/quotes')
         }catch(err){
